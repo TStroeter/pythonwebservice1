@@ -1,16 +1,15 @@
 import cherrypy
+import JinjaDemo
 
-
-class HelloWorld(object):
+class CherryPyServer(object):
     
     @cherrypy.expose
     def index(self):
-        return "Hello world!"
-
+        return JinjaDemo.jinjaDemo()
     
 if __name__ == '__main__':
     cherrypy.config.update(
         {'server.socket_port': 8090,
         'engine.autoreload.on': False,
         'server.shutdown_timeout': 1 })    
-    cherrypy.quickstart(HelloWorld())
+    cherrypy.quickstart(CherryPyServer())
